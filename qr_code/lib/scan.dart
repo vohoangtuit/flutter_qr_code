@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 class ScanScreen extends StatefulWidget {
+  //https://github.com/eccosuprastyo/flutter/tree/master/barcode_scanner
   @override
   _ScanState createState() => new _ScanState();
 }
@@ -52,9 +53,14 @@ class _ScanState extends State<ScanScreen> {
 
   Future scan() async {
     try {
-      String barcode = (await BarcodeScanner.scan()) as String;
-      ///String barcode = json.encode(BarcodeScanner.scan()) ;
-      setState(() => this.barcode = barcode);
+     // String barcode = (await BarcodeScanner.scan()) as String;
+    //  String barcode =(await BarcodeScanner.scan()) as String;
+      ScanResult codeSanner =await BarcodeScanner.scan();
+      print("codeSanner $codeSanner");
+      print("codeSanner toString ${codeSanner.toString()}");
+      print("codeSanner runtimeType ${codeSanner.runtimeType}");
+      print("codeSanner rawContent ${codeSanner.rawContent}");
+      setState(() => this.barcode = codeSanner.rawContent);
     } on PlatformException catch (e) {
       if (e.code == BarcodeScanner.cameraAccessDenied) {
         setState(() {
