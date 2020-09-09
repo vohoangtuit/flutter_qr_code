@@ -3,6 +3,8 @@ import 'dart:convert';
 import 'package:barcode_scan/barcode_scan.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:qr_code/model/product.dart';
+import 'package:qr_code/model/name_card.dart';
 
 class ScanScreen extends StatefulWidget {
   //https://github.com/eccosuprastyo/flutter/tree/master/barcode_scanner
@@ -43,7 +45,7 @@ class _ScanState extends State<ScanScreen> {
               ,
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
-                child: Text(barcode, textAlign: TextAlign.center,),
+                child: Text(barcode, textAlign: TextAlign.center,style: TextStyle(fontSize: 18,color: Colors.teal),),
               )
               ,
             ],
@@ -53,14 +55,44 @@ class _ScanState extends State<ScanScreen> {
 
   Future scan() async {
     try {
-     // String barcode = (await BarcodeScanner.scan()) as String;
-    //  String barcode =(await BarcodeScanner.scan()) as String;
+
       ScanResult codeSanner =await BarcodeScanner.scan();
-      print("codeSanner $codeSanner");
-      print("codeSanner toString ${codeSanner.toString()}");
-      print("codeSanner runtimeType ${codeSanner.runtimeType}");
-      print("codeSanner rawContent ${codeSanner.rawContent}");
-      setState(() => this.barcode = codeSanner.rawContent);
+      // print("codeSanner $codeSanner");
+      // print("codeSanner toString ${codeSanner.toString()}");
+      // print("codeSanner runtimeType ${codeSanner.runtimeType}");
+      // print("codeSanner rawContent ${codeSanner.rawContent}");
+
+      var result =codeSanner.rawContent;
+      if(result!=null){
+        print("result $result");
+        //var parsedJson = json.decode(result);
+
+        // print("parsedJson : "'${parsedJson.runtimeType} : $parsedJson');
+        var profile =  NameCard.fromJson(json.decode(result));
+        var product =  Product.fromJson(json.decode(result));
+      //  NameCard profile=  NameCard.fromJson(json.decode(codeSanner.rawContent));
+        if(profile!=null){
+          setState(() => this.barcode = "QR Name Card\n"+"phone:"+profile.phone+"\n"+"email:"+profile.email);
+        } else if(product!=null){
+          setState(() => this.barcode = "QR Product\n"+"name:"+product.name+"\n"+"price:"+product.price);
+          //NameCard profile= new NameCard.fromJson(json.decode(codeSanner.rawContent));
+
+        }
+        else{
+          setState(() => this.barcode = codeSanner.rawContent);
+        }
+        // if(result.contains("id")){// todo: search other solution
+        //   Product product= new Product.fromJson(json.decode(codeSanner.rawContent));
+        //   setState(() => this.barcode = "QR Product\n"+"name:"+product.name+"\n"+"price:"+product.price);
+        // }else if(result.contains('email')){
+        //   NameCard profile= new NameCard.fromJson(json.decode(codeSanner.rawContent));
+        //   setState(() => this.barcode = "QR Name Card\n"+"phone:"+profile.phone+"\n"+"email:"+profile.email);
+        // }
+
+
+      }else{
+        setState(() => this.barcode = "Error: Qr Code valid");
+      }
     } on PlatformException catch (e) {
       if (e.code == BarcodeScanner.cameraAccessDenied) {
         setState(() {
@@ -76,4 +108,5 @@ class _ScanState extends State<ScanScreen> {
       setState(() => this.barcode = 'Unknown error 1 : $e');
     }
   }
+
 }

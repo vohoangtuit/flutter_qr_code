@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 
 import 'package:flutter/rendering.dart';
+import 'package:qr_code/generate_with_name_card.dart';
 import 'package:qr_code/scan.dart';
 
 import 'generate.dart';
+import 'generate_with_product.dart';
 
 class HomeScreen extends StatelessWidget {
 
@@ -48,7 +50,37 @@ class HomeScreen extends StatelessWidget {
                         MaterialPageRoute(builder: (context) => GenerateScreen()),
                       );
                     },
-                    child: const Text('GENERATE QR CODE')
+                    child: const Text('GENERATE QR CODE WITH STRING')
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
+                child: RaisedButton(
+                    color: Colors.deepOrange,
+                    textColor: Colors.white,
+                    splashColor: Colors.blueGrey,
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => CreateWithProduct()),
+                      );
+                    },
+                    child: const Text('GENERATE QR CODE WITH PRODUCT')
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
+                child: RaisedButton(
+                    color: Colors.deepOrange,
+                    textColor: Colors.white,
+                    splashColor: Colors.blueGrey,
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => CreateWithNameCard()),
+                      );
+                    },
+                    child: const Text('GENERATE QR CODE WITH NAME CARD')
                 ),
               ),
             ],
