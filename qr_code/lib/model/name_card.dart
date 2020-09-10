@@ -5,7 +5,7 @@ class NameCard{
   String name;
   String email;
   String phone;
-
+  //external Type get runtimeType;
   NameCard({this.name, this.email, this.phone});
 
   Map<String, dynamic> toJson() {
@@ -18,6 +18,9 @@ class NameCard{
   factory NameCard.fromJson(Map<String, dynamic> json){
     if(json!=null){
       try{
+        if(json["email"]==null||json["phone"]==null){
+          return null;
+        }
         return NameCard (
           name: json["name"],
           email: json["email"],

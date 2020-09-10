@@ -26,8 +26,11 @@ class Product{
   factory Product.fromJson(Map<String, dynamic> json){
     if(json!=null){
       try{
+        if(json["id"]  as String==null||json["price"]==null||json["image"]==null){
+          return null;
+        }
         return Product (
-          id: json["id"],
+          id: json["id"] as String,
           name: json["name"],
           price: json["price"],
           created: json["created"],
