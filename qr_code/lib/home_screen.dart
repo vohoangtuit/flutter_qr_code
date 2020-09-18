@@ -15,7 +15,7 @@ class HomeScreen extends StatelessWidget {
       appBar: AppBar(
         centerTitle: true,
         title: Text('QR Code Scanner & Generator'),
-        backgroundColor: Colors.deepOrange,
+        backgroundColor: Colors.lightBlue,
       ),
       body: Center(
           child:
@@ -26,7 +26,7 @@ class HomeScreen extends StatelessWidget {
               Padding(
                 padding: EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
                 child: RaisedButton(
-                    color: Colors.deepOrange,
+                    color: Colors.lightBlue,
                     textColor: Colors.white,
                     splashColor: Colors.blueGrey,
                     onPressed: () {
@@ -41,7 +41,7 @@ class HomeScreen extends StatelessWidget {
               Padding(
                 padding: EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
                 child: RaisedButton(
-                    color: Colors.deepOrange,
+                    color: Colors.lightBlue,
                     textColor: Colors.white,
                     splashColor: Colors.blueGrey,
                     onPressed: () {
@@ -56,7 +56,7 @@ class HomeScreen extends StatelessWidget {
               Padding(
                 padding: EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
                 child: RaisedButton(
-                    color: Colors.deepOrange,
+                    color: Colors.lightBlue,
                     textColor: Colors.white,
                     splashColor: Colors.blueGrey,
                     onPressed: () {
@@ -71,7 +71,7 @@ class HomeScreen extends StatelessWidget {
               Padding(
                 padding: EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
                 child: RaisedButton(
-                    color: Colors.deepOrange,
+                    color: Colors.lightBlue,
                     textColor: Colors.white,
                     splashColor: Colors.blueGrey,
                     onPressed: () {

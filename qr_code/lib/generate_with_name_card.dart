@@ -26,7 +26,7 @@ class _CreateWithNameCardState extends State<CreateWithNameCard> {
     return Scaffold(
       appBar: AppBar(
         title: Text('QR Code with Name card'),
-        backgroundColor: Colors.deepOrange,
+        backgroundColor: Colors.lightBlue,
       ),
       body: _contentWidget(),
     );

@@ -30,7 +30,7 @@ class GenerateScreenState extends State<GenerateScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text('QR Code Generator'),
-        backgroundColor: Colors.deepOrange,
+        backgroundColor: Colors.lightBlue,
         actions: <Widget>[
           IconButton(
             icon: Icon(Icons.share),
